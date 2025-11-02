@@ -32,7 +32,11 @@ const userSchema = new mongoose.Schema({
   image : {
     type :String,
     required : true
-  }
+  },
+  whatsApp :{
+    type :String,
+    required : true
+  },
 });
 
 const User = mongoose.model("User",userSchema);
