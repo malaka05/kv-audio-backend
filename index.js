@@ -4,7 +4,9 @@ import mongoose from "mongoose"; // MongoDB connect වීමට mongoose import
 import userRouter from "./routes/userRouter.js"; // User routes import කරනවා
 import productRouter from "./routes/productRouter.js"; // Product routes import කරනවා
 import jwt from "jsonwebtoken"; // JWT (JSON Web Token) import කරනවා
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express(); // Express app එක initialize කරනවා
 
 app.use(bodyParser.json()); // Middleware එකක් set කරනවා, request body එක JSON format එකට convert කරන්න
@@ -25,14 +27,16 @@ app.use((req,res,next)=>{
         }
     })
   }
-  //hiii
+ 
 
   console.log(token) // Token එක print කරනවා
 
   next() // Middleware එකෙන් next function එකට යන්න
 })
 
-const mongourl = "mongodb+srv://admin123:school12345@cluster0.efdhxnc.mongodb.net/?retryWrites=true&w=majority"; // MongoDB connection URL
+const mongourl = //"mongodb+srv://admin123:school12345@cluster0.efdhxnc.mongodb.net/?retryWrites=true&w=majority"; // MongoDB connection URL
+
+process.env.MONGO_URL;
 
 // MongoDB connect කරනවා
 mongoose.connect(mongourl)

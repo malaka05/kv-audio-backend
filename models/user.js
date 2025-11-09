@@ -1,45 +1,63 @@
+// mongoose library එක import කරනවා
 import mongoose from "mongoose";
 
+// user data structure එක define කරන Schema එක
 const userSchema = new mongoose.Schema({
+
+  // user email field එක
   email: {
-    type: String,
-    required: true,
-    unique: true
+    type: String,       // type එක String
+    required: true,     // email අනිවාර්යයි
+    unique: true        // එකම email එක database එකේ unique වෙනවා
   },
 
-  password :{
-    type : String,
-    required : true
+  // user password field එක
+  password: {
+    type: String,       // type එක String
+    required: true      // password අනිවාර්යයි
   },
-  role :{
-    type :String,
-    required :true,
-    default :"customer"
+
+  // user role field එක
+  role: {
+    type: String,       // type එක String
+    required: true,     // role අනිවාර්යයි
+    default: "customer" // default role එක "customer"
   },
+
+  // user first name field එක
   FirstName: {
-    type :String,
-    required :true
+    type: String,       // type එක String
+    required: true      // first name අනිවාර්යයි
   },
-  lastname : {
-    type :String,
-    required :true
-  },
-  address : {
-    type: String,
-    required : true
 
+  // user last name field එක
+  lastname: {
+    type: String,       // type එක String
+    required: true      // last name අනිවාර්යයි
   },
-  image : {
-    type :String,
-    required : true
+
+  // user address field එක
+  address: {
+    type: String,       // type එක String
+    required: true      // address අනිවාර්යයි
   },
-  whatsApp :{
-    type :String,
-    required : true
+
+  // user profile image field එක
+  image: {
+    type: String,       // type එක String
+    required: true      // image අනිවාර්යයි
+  },
+
+  // user WhatsApp number field එක
+  whatsApp: {
+    type: String,       // type එක String
+    required: true      // WhatsApp number අනිවාර්යයි
   },
 });
 
-const User = mongoose.model("User",userSchema);
+// Schema එකෙන් model එක create කරනවා
+// "User" කියන collection එකට map වෙනවා MongoDB තුළ
+const User = mongoose.model("User", userSchema);
 
-// Export the model
+// model එක export කරනවා, වෙන තැන්වල use කරන්න
 export default User;
