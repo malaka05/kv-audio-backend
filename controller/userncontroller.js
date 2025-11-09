@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv"; 
 
 export async function registerUser(req, res) {
   try {
@@ -53,8 +54,8 @@ export function loginUser(req, res) {
             lastName: user.lastname,
             email: user.email,
             role: user.role,
-          },
-          "kv-secret-89!"
+            profilepic :user.profilepic,
+          },process .env.JWT_SECRET
         );
 
         // 🛠 06. success response eka ekama place ekakata dala

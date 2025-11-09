@@ -53,6 +53,11 @@ const userSchema = new mongoose.Schema({
     type: String,       // type එක String
     required: true      // WhatsApp number අනිවාර්යයි
   },
+  profilepic : {
+        type: String,
+        required : true,
+        default : "https://img.icons8.com/?size=1200&id=tZuAOUGm9AuS&format=jpg" 
+    },
 });
 
 // Schema එකෙන් model එක create කරනවා

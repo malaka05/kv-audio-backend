@@ -5,6 +5,7 @@ import userRouter from "./routes/userRouter.js"; // User routes import කරන
 import productRouter from "./routes/productRouter.js"; // Product routes import කරනවා
 import jwt from "jsonwebtoken"; // JWT (JSON Web Token) import කරනවා
 import dotenv from "dotenv";
+import reviewRouter from "./routes/reviewRouter.js";
 
 dotenv.config();
 const app = express(); // Express app එක initialize කරනවා
@@ -21,7 +22,7 @@ app.use((req,res,next)=>{
     token = token.replace("Bearer"," ") // "Bearer" keyword එක token එකෙන් remove කරනවා
 
     // Token verify කරනවා JWT secret key එකත් එක්ක
-    jwt.verify(token,"kv-secret-89!", (err,decoded)=>{
+    jwt.verify(token,process.env.JWT_SECRET  , (err,decoded)=>{
         if(!err){ // Error නැතිනම්
           console.log(decoded); // Token එක valid නම් decoded info එක print කරනවා
         }
@@ -45,6 +46,8 @@ mongoose.connect(mongourl)
 
 app.use("/api/user", userRouter); // /api/user endpoint එකට userRouter use කරනවා
 app.use("/api/product", productRouter); // /api/product endpoint එකට productRouter use කරනවා
+
+app.use("/api/reviews",reviewRouter)
 
 // Server එක start කරනවා port 3000 එකේ
 app.listen(3000, () => {
